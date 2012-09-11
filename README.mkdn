@@ -12,7 +12,8 @@ It is used as follows:
     ./build.sh [--no-upload] [clean] [sync]
 
 
-The _--no-upload_ flag tells the script not to upload the build to dudeman1996's goo.im folder. Note that if anyone other than dudeman1996 tried to upload a build, they would need the password.
+The _--no-upload_ flag tells the script not to upload the build to dudeman1996's goo.im folder. 
+_Note that if anyone other than dudeman1996 tried to upload a build, they would need the password._
 
 The _clean_ parameter tells the script to delete the _out_ folder before compiling.
 
