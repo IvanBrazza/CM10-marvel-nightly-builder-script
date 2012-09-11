@@ -53,13 +53,26 @@ case "$2" in
 	echo "";;
 esac
 
+#- Check the status of the third parameter
+case "$3" in
+  clean)
+    echo "${bldblu}Cleaning output files${txtrst}"
+    rm -r -f out
+	echo "";;
+	
+  sync)
+    echo "${bldblu}Syncing latest sources${txtrst}"
+	repo sync
+	echo "";;
+esac
+
 #- Check if --no-upload flag is passed. If so, don't upload to goo.im
-if [ "$1" = "--no-upload" ] || [ "$2" =  "--no-upload" ]
+if [ "$1" = "--no-upload" ] || [ "$2" =  "--no-upload" ] || [ "$3" = "--no-upload" ]
   then
     echo "${bldblu}--no-upload flag specified. Not uploading to goo.im when the build is complete.${txtrst}"
     upload=false
 	echo ""
-elif [ "$1" != "--no-upload" ] || [ "$2" !=  "--no-upload" ]
+elif [ "$1" != "--no-upload" ] || [ "$2" !=  "--no-upload" ] || [ "$3" = "--no-upload" ]
   then
     echo "${bldblu}Uploading to goo.im when the build is complete.${txtrst}"
     upload=true
