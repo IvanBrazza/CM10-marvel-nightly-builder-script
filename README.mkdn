@@ -1,0 +1,18 @@
+CyanogenMod 10 Nightly build script for marvel
+===============
+
+How it works
+---------------
+The script is simple and works in a linux bash or cygwin environment.
+
+The script must be placed inside the root directory of the CM10 source.
+
+It is used as follows:
+    ./build.sh [--no-upload] [clean] [sync]
+
+
+The --no-upload flag tells the script not to upload the build to dudeman1996's goo.im folder. Note that if anyone other than dudeman1996 tried to upload a build, they would need the password.
+
+The _clean_ parameter tells the script to delete the _out_ folder before compiling.
+
+The _sync_ parameter tells the script to run the _repo_sync_ command before compiling to make sure the source is up to date.
