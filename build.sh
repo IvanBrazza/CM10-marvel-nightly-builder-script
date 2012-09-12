@@ -113,11 +113,9 @@ make -j8 bacon
 #- Get finished time
 res2=$(date -u +%s)
 
-#####################
-#- Finished compiling
-#####################
-
+#############################
 #- Am I uploading this build?
+#############################
 if [ "$upload" = "true" ]
 then
   echo "${bldblu}Uploading to goo.im...${txtrst}"
@@ -128,6 +126,10 @@ then
   echo "${bldblu}--no-upload flag passed. Not uploading to goo.im${txtrst}"
   echo ""
 fi
+
+###################################
+#- Time for the elapsed time stuff!
+###################################
 
 #- Set time variables
 if [ "$upload" = "true" ]
@@ -143,6 +145,7 @@ else
   echo ""
 fi
 
+#- Display elapsed time for build & upload (if applicable)
 if [ "$upload" = "true" ] && [ "$timeum" > "60" ]
 then
   echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeuh hours / $timeum minutes / $timeus seconds${txtrst}"
@@ -153,6 +156,7 @@ then
   echo ""
 fi
 
+#- Display elapsed time for build
 if [ "$upload" = "false" ] && [ "timem" > "60" ]
 then
   echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timeh hours / $timem minutes / $times seconds${txtrst}"
