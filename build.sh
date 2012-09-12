@@ -128,15 +128,36 @@ case "$upload" in
 	echo "";;
 esac
 
-#- Give elapsed time
+#- Set time variables
 if [ "$upload" = "true" ]
   then
     timeus=$(($res3 - $res1))
 	timeum=$(($timeus / 60))
-    echo "${bldgrn}Total taken to build & upload: ${txtrst}${grn}$timeum minutes ($timeus seconds)${txtrst}"
+	timeuh=$(($timeum / 60))
 else
   times=$(($res2 - $res1))
   timem=$(($times / 60))
+  timeh=$(($timem / 60))
   echo "${bldgrn}Time taken to build: ${txtrst}${grn}$timem minutes ($times seconds)${txtrst}"
   echo ""
+fi
+
+if [ "$upload" = "true" ] && [ "$timeum" > "60" ]
+  then
+    echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeuh hours / $timeum minutes / $timeus seconds${txtrst}"
+	echo ""
+elif [ "$upload" = "true" ] && [ "$timeum" < "60" ]
+  then
+    echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeum minutes / $timeus seconds${txtrst}"
+	echo ""
+fi
+
+if [ "$upload" = "false" ] && [ "timem" > "60" ]
+  then
+    echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timeh hours / $timem minutes / $times seconds${txtrst}"
+	echo ""
+elif [ "$upload" = "false" ] && [ "$timem" < "60" ]
+  then
+    echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timem minutes / $times seconds${txtrst}"
+	echo ""
 fi
