@@ -9,15 +9,15 @@ The script must be placed inside the root directory of the CM10 source.
 
 It is used as follows:
 
-    ./build.sh [--no-upload] [clean] [sync]
+    ./build.sh [--no-upload] [--no-sync] [clean]
 
 
 The _--no-upload_ flag tells the script not to upload the build to dudeman1996's goo.im folder. 
 _Note that if anyone other than dudeman1996 tried to upload a build, they would need the password._
 If this flag is not passed when running the script, the build _will_ be uploaded.
 
+The _--no-sync_ flag tells the script not to run the _repo sync_ command before compiling.
+If this flag is not passed when running the script, then the latest sources _will_ be downloaded.
+
 The _clean_ parameter tells the script to delete the _out_ folder before compiling.
 If this parameter is not passed when running the script, the out folder will _not_ be deleted (dirty build).
-
-The _sync_ parameter tells the script to run the _repo sync_ command before compiling to make sure the source is up to date.
-If this parameter is not passed when running the script, then the latest sources will _not_ be downloaded.

@@ -23,59 +23,62 @@ clear
 date=$(date -u +%Y%m%d)
 echo "${bldcya}CM10 Nightly Build Script${txtrst}"
 echo ""
-
 #- Get time of startup
 res1=$(date +%s)
 
-#- Check the status of the first parameter
-case "$1" in
-  clean)
-    echo "${bldblu}Cleaning output files${txtrst}"
-    rm -r -f out
-	echo "";;
-	
-  sync)
-    echo "${bldblu}Syncing latest sources${txtrst}"
-	repo sync
-	echo "";;
-esac
+#############################################
+#- I need to check what parameters are passed
+#############################################
 
-#- Check the status of the second parameter
-case "$2" in
-  clean)
-    echo "${bldblu}Cleaning output files${txtrst}"
-    rm -r -f out
-	echo "";;
-	
-  sync)
-    echo "${bldblu}Syncing latest sources${txtrst}"
-	repo sync
-	echo "";;
-esac
+#- If the clean parameter is passed, set clean=true. Otherwise set clean=false
+if [ "$1" = "clean" ] || [ "$2" = "clean" ] || [ "$3" = "clean" ]
+then
+  clean=true
+else
+  clean=false
+fi
 
-#- Check the status of the third parameter
-case "$3" in
-  clean)
-    echo "${bldblu}Cleaning output files${txtrst}"
-    rm -r -f out
-	echo "";;
-	
-  sync)
-    echo "${bldblu}Syncing latest sources${txtrst}"
-	repo sync
-	echo "";;
-esac
+#- If the --no-sync flag is passed, set sync=false. Otherwise set clean=true
+if [ "$1" = "--no-sync" ] || [ "$2" = "--no-sync" ] || [ "$3" = "--no-sync" ]
+then
+  sync=false
+else
+  sync=true
+fi
 
-#- Check if --no-upload flag is passed. If so, don't upload to goo.im
-if [ "$1" = "--no-upload" ] || [ "$2" =  "--no-upload" ] || [ "$3" = "--no-upload" ]
+#- If the --no-upload flag is passed, set upload=false. Otherwise set upload=true
+if [ "$1" = "--no-upload" ] || [ "$2" = "--no-upload" ] || [ "$3" = "--no-upload" ]
+then
+  echo "${bldblu}--no-upload flag specified. Not uploading to goo.im when the build is complete.${txtrst}"
+  upload=false
+  echo ""
+else
+  upload=true
+fi
+
+##########################################
+#- I need to check the status of the clean
+#- and sync variables and act accordingly
+##########################################
+if [ "$sync" = "true" ]
   then
-    echo "${bldblu}--no-upload flag specified. Not uploading to goo.im when the build is complete.${txtrst}"
-    upload=false
+    echo "${bldblu}Syncing latest sources...${txtrst}"
+	repo sync
 	echo ""
-elif [ "$1" != "--no-upload" ] || [ "$2" !=  "--no-upload" ] || [ "$3" = "--no-upload" ]
+elif [ "$sync" = "false" ]
   then
-    echo "${bldblu}Uploading to goo.im when the build is complete.${txtrst}"
-    upload=true
+    echo "${red}Warning! The --no-sync flag was passed. This could result in a build with outdated sources. Re-run the script without the --no-sync flag to make sure your sources are up to date.${txtrst}"
+	echo ""
+fi
+
+if [ "$clean" = "true" ]
+  then
+    echo "${bldblu}Cleaning out files${txtrst}"
+    rm -r -f out
+	echo "";;
+elif [ "$clean" = "false" ]
+  then
+    echo "${red}Warning! The clean parameter was not passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
 	echo ""
 fi
 
