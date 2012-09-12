@@ -31,12 +31,12 @@ res1=$(date -u +%s)
 #- I need to check what parameters are passed
 #############################################
 
-#- If the clean parameter is passed, set clean=true. Otherwise set clean=false
-if [ "$1" = "clean" ] || [ "$2" = "clean" ] || [ "$3" = "clean" ]
+#- If the --dirty flag is passed, set clean=false. Otherwise set clean=true
+if [ "$1" = "--dirty" ] || [ "$2" = "--dirty" ] || [ "$3" = "--dirty" ]
 then
-  clean=true
-else
   clean=false
+else
+  clean=true
 fi
 
 #- If the --no-sync flag is passed, set sync=false. Otherwise set clean=true
@@ -79,7 +79,7 @@ then
   echo "";;
 elif [ "$clean" = "false" ]
 then
-  echo "${red}Warning! The clean parameter was not passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
+  echo "${red}Warning! The --dirty flag was passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
   echo ""
 fi
 
