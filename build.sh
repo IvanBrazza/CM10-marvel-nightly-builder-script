@@ -61,25 +61,25 @@ fi
 #- and sync variables and act accordingly
 ##########################################
 if [ "$sync" = "true" ]
-  then
-    echo "${bldblu}Syncing latest sources...${txtrst}"
-	repo sync
-	echo ""
+then
+  echo "${bldblu}Syncing latest sources...${txtrst}"
+  repo sync
+  echo ""
 elif [ "$sync" = "false" ]
-  then
-    echo "${red}Warning! The --no-sync flag was passed. This could result in a build with outdated sources. Re-run the script without the --no-sync flag to make sure your sources are up to date.${txtrst}"
-	echo ""
+then
+  echo "${red}Warning! The --no-sync flag was passed. This could result in a build with outdated sources. Re-run the script without the --no-sync flag to make sure your sources are up to date.${txtrst}"
+  echo ""
 fi
 
 if [ "$clean" = "true" ]
-  then
-    echo "${bldblu}Cleaning out files${txtrst}"
-    rm -r -f out
-	echo "";;
+then
+  echo "${bldblu}Cleaning out files${txtrst}"
+  rm -r -f out
+  echo "";;
 elif [ "$clean" = "false" ]
-  then
-    echo "${red}Warning! The clean parameter was not passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
-	echo ""
+then
+  echo "${red}Warning! The clean parameter was not passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
+  echo ""
 fi
 
 #####################################
@@ -130,10 +130,10 @@ esac
 
 #- Set time variables
 if [ "$upload" = "true" ]
-  then
-    timeus=$(($res3 - $res1))
-	timeum=$(($timeus / 60))
-	timeuh=$(($timeum / 60))
+then
+  timeus=$(($res3 - $res1))
+  timeum=$(($timeus / 60))
+  timeuh=$(($timeum / 60))
 else
   times=$(($res2 - $res1))
   timem=$(($times / 60))
@@ -143,21 +143,21 @@ else
 fi
 
 if [ "$upload" = "true" ] && [ "$timeum" > "60" ]
-  then
-    echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeuh hours / $timeum minutes / $timeus seconds${txtrst}"
-	echo ""
+then
+  echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeuh hours / $timeum minutes / $timeus seconds${txtrst}"
+  echo ""
 elif [ "$upload" = "true" ] && [ "$timeum" < "60" ]
-  then
-    echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeum minutes / $timeus seconds${txtrst}"
-	echo ""
+then
+  echo "${bldgrn}Total time taken to build & upload: ${txtrst}${grn}$timeum minutes / $timeus seconds${txtrst}"
+  echo ""
 fi
 
 if [ "$upload" = "false" ] && [ "timem" > "60" ]
-  then
-    echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timeh hours / $timem minutes / $times seconds${txtrst}"
-	echo ""
+then
+  echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timeh hours / $timem minutes / $times seconds${txtrst}"
+  echo ""
 elif [ "$upload" = "false" ] && [ "$timem" < "60" ]
-  then
-    echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timem minutes / $times seconds${txtrst}"
-	echo ""
+then
+  echo "${bldgrn}Total time taken to build: ${txtrst}${grn}$timem minutes / $times seconds${txtrst}"
+  echo ""
 fi
