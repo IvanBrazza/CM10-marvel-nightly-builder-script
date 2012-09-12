@@ -19,6 +19,7 @@ txtrst=$(tput sgr0)             #  Reset      - Usage: ${txtrst}
 #############
 #- Initialize
 #############
+echo -e '\0033\0143'
 clear
 date=$(date -u +%Y%m%d)
 echo "${bldcya}CM10 Nightly Build Script${txtrst}"
