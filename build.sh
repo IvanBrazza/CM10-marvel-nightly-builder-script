@@ -118,15 +118,16 @@ res2=$(date -u +%s)
 #####################
 
 #- Am I uploading this build?
-case "$upload" in
-  true)
-    echo "${bldblu}Uploading to goo.im...${txtrst}"
-	scp out/target/product/marvel/cm-10-"$date"-EXPERIMENTAL-marvel-CYANOGEN-NIGHTLY.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
-	res3=$(date -u +%s);;
-  false)
-    echo "${bldblu}--no-upload flag passed. Not uploading to goo.im${txtrst}"
-	echo "";;
-esac
+if [ "$upload" = "true" ]
+then
+  echo "${bldblu}Uploading to goo.im...${txtrst}"
+  scp out/target/product/marvel/cm-10-"$date"-EXPERIMENTAL-marvel-CYANOGEN-NIGHTLY.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
+  res3=$(date -u +%s)
+elif [ "$upload" = "false" ]
+then
+  echo "${bldblu}--no-upload flag passed. Not uploading to goo.im${txtrst}"
+  echo ""
+fi
 
 #- Set time variables
 if [ "$upload" = "true" ]
