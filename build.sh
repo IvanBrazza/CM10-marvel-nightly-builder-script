@@ -24,7 +24,7 @@ date=$(date -u +%Y%m%d)
 echo "${bldcya}CM10 Nightly Build Script${txtrst}"
 echo ""
 #- Get time of startup
-res1=$(date +%s)
+res1=$(date -u +%s)
 
 #############################################
 #- I need to check what parameters are passed
@@ -111,7 +111,7 @@ echo "${bldblu}Building...${txtrst}"
 make -j8 bacon
 
 #- Get finished time
-res2=$(date +%s)
+res2=$(date -u +%s)
 
 #####################
 #- Finished compiling
@@ -122,7 +122,7 @@ case "$upload" in
   true)
     echo "${bldblu}Uploading to goo.im...${txtrst}"
 	scp out/target/product/marvel/cm-10-"$date"-EXPERIMENTAL-marvel-CYANOGEN-NIGHTLY.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
-	res3=$(date +%s);;
+	res3=$(date -u +%s);;
   false)
     echo "${bldblu}--no-upload flag passed. Not uploading to goo.im${txtrst}"
 	echo "";;
