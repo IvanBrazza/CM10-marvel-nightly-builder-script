@@ -76,7 +76,7 @@ if [ "$clean" = "true" ]
 then
   echo "${bldblu}Cleaning out files${txtrst}"
   rm -r -f out
-  echo "";;
+  echo ""
 elif [ "$clean" = "false" ]
 then
   echo "${red}Warning! The --dirty flag was passed! This will result in a 'dirty build' and could either fail to compile, or the build may not work at all. Use with caution.${txtrst}"
