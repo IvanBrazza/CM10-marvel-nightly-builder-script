@@ -75,7 +75,8 @@ fi
 if [ "$clean" = "true" ]
 then
   echo "${bldblu}Cleaning out files${txtrst}"
-  rm -r -f out
+  make clean
+  make clobber
   echo ""
 elif [ "$clean" = "false" ]
 then
