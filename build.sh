@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 #- CM10 nightly building script
 
@@ -120,6 +120,8 @@ res2=$(date -u +%s)
 #############################
 if [ "$upload" = "true" ]
 then
+  read -p "${bldblu}Press enter to upload to goo.im"
+  echo ""
   echo "${bldblu}Uploading to goo.im...${txtrst}"
   scp out/target/product/marvel/cm-10-"$date"-EXPERIMENTAL-marvel-CYANOGEN-NIGHTLY.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
   res3=$(date -u +%s)
