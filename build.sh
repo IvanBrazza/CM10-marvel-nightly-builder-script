@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 #- CM10 nightly building script
 
