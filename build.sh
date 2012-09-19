@@ -3,7 +3,7 @@
 #- CM10 nightly building script
 
 ###################################
-#- Colorize and add text parameters
+#- Colourise and add text parameters
 ###################################
 red=$(tput setaf 1)             #  Red        - Usage: ${red}
 grn=$(tput setaf 2)             #  Green      - Usage: ${grn}
