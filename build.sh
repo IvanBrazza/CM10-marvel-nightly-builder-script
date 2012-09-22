@@ -149,7 +149,6 @@ else
   times=$(($res2 - $res1))
   timem=$(($times / 60))
   timeh=$(($timem / 60))
-  echo "${bldgrn}Time taken to build: ${txtrst}${grn}$timem minutes ($times seconds)${txtrst}"
   echo ""
 fi
 
