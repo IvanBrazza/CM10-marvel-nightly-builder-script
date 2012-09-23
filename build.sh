@@ -67,7 +67,7 @@ then
   repo sync
   echo ""
   echo "${bldblu}Patching GPS and Camera fixes from CM's gerrit${txtrst}"
-  patch.sh
+  ./patch.sh
   echo ""
 elif [ "$sync" = "false" ]
 then
