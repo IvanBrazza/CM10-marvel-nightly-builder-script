@@ -66,6 +66,14 @@ then
   echo "${bldblu}Syncing latest sources...${txtrst}"
   repo sync
   echo ""
+  echo "${bldblu}Cherry-picking GPS and Camera fixes...${txtrst}"
+  cd bionic
+  git fetch http://review.cyanogenmod.com/CyanogenMod/android_bionic refs/changes/31/14631/1 && git cherry-pick FETCH_HEAD
+  cd ..
+  cd hardware/msm7k
+  git fetch http://review.cyanogenmod.com/CyanogenMod/android_hardware_msm7k refs/changes/58/15058/3 && git checkout FETCH_HEAD
+  cd ..
+  echo ""
 elif [ "$sync" = "false" ]
 then
   echo "${red}Warning! The --no-sync flag was passed. This could result in a build with outdated sources. Re-run the script without the --no-sync flag to make sure your sources are up to date.${txtrst}"
