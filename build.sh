@@ -66,6 +66,9 @@ then
   echo "${bldblu}Syncing latest sources...${txtrst}"
   repo sync
   echo ""
+  echo "${bldblu}Patching GPS and Camera fixes from CM's gerrit${txtrst}"
+  patch.sh
+  echo ""
 elif [ "$sync" = "false" ]
 then
   echo "${red}Warning! The --no-sync flag was passed. This could result in a build with outdated sources. Re-run the script without the --no-sync flag to make sure your sources are up to date.${txtrst}"
