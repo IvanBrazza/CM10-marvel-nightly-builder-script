@@ -122,7 +122,7 @@ then
   read -p "${bldblu}Press enter to upload to goo.im"
   echo ""
   echo "${bldblu}Uploading to goo.im...${txtrst}"
-  scp out/target/product/marvel/cm-10-"$date"-UNOFFICIAL-marvel.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
+  scp out/target/product/marvel/cm-10-"$date"-EXPERIMENTAL-marvel-CRYPTOMILK-ALPHA0.zip dudeman1996@upload.goo.im:public_html/CM10-Nightlies_marvel/cm-10-"$date"-EXPERIMENTAL-marvel-NIGHTLY.zip
   echo ""
   res3=$(date -u +%s)
 elif [ "$upload" = "false" ]
